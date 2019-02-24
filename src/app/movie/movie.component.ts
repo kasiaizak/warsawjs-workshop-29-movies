@@ -17,13 +17,9 @@ export class MovieComponent {
     url: 'https://www.youtube.com/embed/Aybh_2pIi2I'
   }
 
-  private sanitizer: DomSanitizer;
+  constructor(private sanitizer: DomSanitizer) {}
 
-  constructor(sanitizer: DomSanitizer) {
-    this.sanitizer = sanitizer;
-  }
-
-  getWrappedMovieUrl(): SafeResourceUrl {
+  get wrappedMovieUrl(): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.url);
   }
 }
